@@ -207,6 +207,56 @@ void lab::lab3_3_2() {
 	waitKey(0);
 }
 
+// Median Filter Color
+void lab::lab3_3_3() {
+	string imageName = "..\\image\\lena_noise.png";
+
+	Mat image = imread(imageName.c_str(), IMREAD_COLOR);
+	Mat newImage = Mat::zeros(image.size(), image.type());
+
+	int square = SQUARE;
+	int half = square / 2;
+	int pow = square * square;
+	int temp, c;
+	int** arr = new int* [3];
+
+	for (c = 0; c < 3; c++) {
+		arr[c] = new int[pow];
+		fill_n(arr[c], pow, 0);
+	}
+
+	for (int y = 0; y < image.rows; y++) {
+		for (int x = 0; x < image.cols; x++) {
+			for (temp = 0, c = 0; c < 3; temp = 0, c++) {
+				for (int v = y - half; v <= y + half; v++) {
+					if (v >= 0 && v < image.rows)
+						for (int l = x - half; l <= x + half; l++) {
+							if (l >= 0 && l < image.cols) {
+								arr[c][temp] = image.at<Vec3b>(v, l)[c];
+							}
+							temp++;
+						}
+				}
+
+				sort(arr[c], arr[c] + pow);
+				newImage.at<Vec3b>(y, x)[c] = arr[c][pow / 2];
+				fill_n(arr[c], pow, 0);
+			}
+		}
+	}
+
+	for (int i = 0; i < 3; i++) {
+		delete[] arr[i];
+	}
+
+	delete[] arr;
+
+	imshow("Median Filter Color", newImage);
+
+	// ºñ±³¿ë
+	waitKey(0);
+}
+
 // Derivative Filter
 void lab::lab3_4() {
 	string imageName = "..\\image\\Lena.png";

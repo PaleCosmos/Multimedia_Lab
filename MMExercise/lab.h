@@ -7,24 +7,26 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <iostream>
 #include<cmath>
+#include<algorithm>
 #pragma endregion
 
 namespace lab
 {
-	#pragma region LAB2
+#pragma region LAB2
 	void lab2_1();
 	void lab2_2();
-	#pragma endregion
+#pragma endregion
 
-	#pragma region LAB3
+#pragma region LAB3
 	void lab3_1_1();
 	void lab3_1_2();
 	void lab3_2_1();
 	void lab3_2_2();
 	void lab3_3_1();
 	void lab3_3_2();
+	void lab3_3_3();
 	void lab3_4();
 	void lab3_5();
-	#pragma endregion
+#pragma endregion
 }
 #endif

@@ -15,8 +15,8 @@ void show() {
 
 int main() {
 	//show();
-	showImage("..\\image\\moon_blur.png");
-	lab3_5();
+	//showImage("..\\image\\moon_blur.png");
+	lab3_3_3();
 
 	return 0;
 }
