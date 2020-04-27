@@ -23,6 +23,8 @@ namespace lab
 	void lab3_2_2();
 	void lab3_3_1();
 	void lab3_3_2();
+	void lab3_4();
+	void lab3_5();
 	#pragma endregion
 }
 #endif

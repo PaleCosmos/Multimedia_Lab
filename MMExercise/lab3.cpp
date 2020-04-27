@@ -206,3 +206,69 @@ void lab::lab3_3_2() {
 
 	waitKey(0);
 }
+
+// Derivative Filter
+void lab::lab3_4() {
+	string imageName = "..\\image\\Lena.png";
+	int ksize = 3;
+	int half = ksize >> 1;
+	float temp0, temp1, temp2;
+
+	Mat image = imread(imageName.c_str(), IMREAD_GRAYSCALE);
+	Mat Gmagnotude = Mat::zeros(image.size(), CV_8U);
+
+	float kernelx[3][3] = { {-1, 0, 1}, {-2, 0, 2},{-1, 0, 1} };
+	float kernely[3][3] = { {-1, -2, -1}, {0, 0, 0},{1, 2, 1} };
+
+	for (int y = half; y < image.rows - half; y++) {
+		for (int x = half; x < image.cols - half; x++) {
+			temp0 = temp1 = temp2 = 0;
+			for (int i = 0; i < ksize; i++) {
+				for (int j = 0; j < ksize; j++) {
+					temp0 = image.at<uchar>(y + (i - half), x + (j - half));
+					temp1 += temp0 * kernelx[i][j];
+					temp2 += temp0 * kernely[i][j];
+
+					Gmagnotude.at<uchar>(y, x) = sqrt(temp1 * temp1 + temp2 * temp2);
+				}
+			}
+		}
+	}
+
+	imshow("Derivative Filter Gray", Gmagnotude);
+
+	waitKey(0);
+}
+
+// Laplacian Filter
+void lab::lab3_5() {
+	string imageName = "..\\image\\moon_blur.png";
+	int ksize = 3;
+	int half = ksize >> 1;
+	float temp1, c = 1.0;
+
+	Mat image = imread(imageName.c_str(), IMREAD_GRAYSCALE);
+	Mat laplacian_image = Mat::zeros(image.size(), CV_8U);
+	Mat sharpen_image = Mat::zeros(image.size(), CV_8U);
+
+	float kernel[3][3] = { {0, -1, 0}, {-1, 4, -1},{0, -1, 0} };
+
+	for (int y = half; y < image.rows - half; y++) {
+		for (int x = half; x < image.cols - half; x++) {
+			temp1 = 0;
+			for (int i = 0; i < ksize; i++) {
+				for (int j = 0; j < ksize; j++) {
+					temp1 += image.at<uchar>(y + (i - half), x + (j - half)) * kernel[i][j];
+
+					laplacian_image.at<uchar>(y, x) = saturate_cast<uchar>(temp1);
+					sharpen_image.at<uchar>(y, x) = saturate_cast<uchar>(image.at<uchar>(y, x) + c * temp1);
+				}
+			}
+		}
+	}
+
+	imshow("Laplacian Filter Gray", laplacian_image);
+	imshow("Enhanced Gray", sharpen_image);
+
+	waitKey(0);
+}
