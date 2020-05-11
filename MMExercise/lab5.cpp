@@ -10,20 +10,31 @@ void lab::lab5_1()
 
 	Mat img = imread(imageName, IMREAD_COLOR);
 	resize(img, img, Size(img.cols / 1.2, img.rows / 1.2));
+
 	Mat img2 = imread(imageName2, IMREAD_COLOR);
 	resize(img2, img2, Size(img.cols, img.rows));
-	Mat converted;
-	cvtColor(img, converted, COLOR_BGR2HSV);
-	Mat green = converted.clone();
-	inRange(converted, Scalar(30, 30, 30), Scalar(72, 255, 255), green);
-	Mat dst, dst1, inverted;
-	bitwise_not(green, inverted);
-	bitwise_and(img, img, dst, inverted);
-	bitwise_or(dst, img2, dst1, green);
-	bitwise_or(dst, dst1, dst1);
-	imshow("img", img);
-	//imshow("green", green);
-	//imshow("dst", dst);
-	imshow("dst1", dst1);
+
+	cvtColor(img, img, COLOR_BGR2YCrCb);
+	cvtColor(img2, img2, COLOR_BGR2YCrCb);
+
+	Vec3b t;
+
+	int g = img.rows >> 4;
+	int v = img.cols >> 3;
+
+	for (int y = g; y < img.rows; y++) {
+		for (int x = v; x < img.cols - v; x++) {
+			t = img.at<Vec3b>(y, x);
+
+			if (t[1] >= 100 || t[2] >= 110) {
+				img2.at<Vec3b>(y, x) = img.at<Vec3b>(y, x);
+			}
+		}
+	}
+
+	cvtColor(img2, img2, COLOR_YCrCb2BGR);
+
+	imshow("img", img2);
+
 	waitKey(0);
 }
