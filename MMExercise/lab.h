@@ -32,5 +32,9 @@ namespace lab
 #pragma region LAB4
 	void lab4_1();
 #pragma endregion
+
+#pragma region LAB5
+	void lab5_1();
+#pragma endregion
 }
 #endif
