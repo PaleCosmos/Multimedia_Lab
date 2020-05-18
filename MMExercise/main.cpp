@@ -13,12 +13,8 @@ void show() {
 	lab3_3_2();
 }
 
-int main() {
-	std::string imageName = "..\\image\\gg.jpg";
-	std::string imageName2 = "..\\image\\moon.jpg";
-	showImage(imageName, "chroma");
-	showImage(imageName2, "mooon");
-	lab5_1();
+int main(int arg, char** args) {
+	lab6_4(arg, args);
 
 	return 0;
 }

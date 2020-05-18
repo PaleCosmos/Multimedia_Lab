@@ -154,6 +154,7 @@
     <ClCompile Include="lab3.cpp" />
     <ClCompile Include="lab4.cpp" />
     <ClCompile Include="lab5.cpp" />
+    <ClCompile Include="lab6.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
