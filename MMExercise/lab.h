@@ -44,5 +44,11 @@ namespace lab
 	void lab6_4(int, char**);
 	void lab6_5(int, char**);
 #pragma endregion
+
+#pragma region LAB7
+	void lab7_1();
+	void lab7_2();
+	void lab7_3();
+#pragma endregion
 }
 #endif

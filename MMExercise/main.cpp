@@ -14,7 +14,7 @@ void show() {
 }
 
 int main(int arg, char** args) {
-	lab6_4(arg, args);
+	lab7_3();
 
 	return 0;
 }
