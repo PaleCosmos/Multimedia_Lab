@@ -63,7 +63,7 @@ void lab::lab7_3()
 	VideoCapture cap(0);
 	string imageName = "..\\image\\moon.jpg";
 	Mat img = imread(imageName, IMREAD_COLOR);
-
+	
 	if (!cap.isOpened())
 		return;
 
