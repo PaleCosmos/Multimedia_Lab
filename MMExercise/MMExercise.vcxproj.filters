@@ -36,6 +36,12 @@
     <ClCompile Include="lab7.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="lab8.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="lab9.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lab.h">

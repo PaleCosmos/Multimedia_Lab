@@ -50,5 +50,13 @@ namespace lab
 	void lab7_2();
 	void lab7_3();
 #pragma endregion
+
+#pragma region LAB8
+
+#pragma endregion
+
+#pragma region LAB9
+	void lab9_1();
+#pragma endregion
 }
 #endif
